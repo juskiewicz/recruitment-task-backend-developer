@@ -1,6 +1,7 @@
-controllers:
-    resource: ../src/Controller/
+api_controllers:
+    resource: '../src/NYTimes/UI/Http/Rest/Controller/'
     type: annotation
+    prefix: /
 
 kernel:
     resource: ../src/Kernel.php

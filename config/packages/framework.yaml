@@ -17,6 +17,15 @@ framework:
     php_errors:
         log: true
 
+    http_client:
+        scoped_clients:
+            nytimes.client:
+                base_uri: 'https://api.nytimes.com'
+
+    serializer:
+        default_context:
+            enable_max_depth: true
+
 when@test:
     framework:
         test: true

@@ -1,0 +1,21 @@
+security:
+    enable_authenticator_manager: true
+
+    providers:
+        users_in_memory:
+            memory:
+                users:
+                    user: { password: '%app.api_key%', roles: [ 'ROLE_USER' ] }
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            pattern: ^/nytimes
+            provider: users_in_memory
+            stateless: true
+            custom_authenticators:
+                - App\NYTimes\Infrastructure\Framework\ApiKeyAuthenticator
+
+    access_control:
+        - { path: ^/nytimes/., roles: ROLE_USER }
